@@ -6,6 +6,7 @@ import Anime from '../pages/AnimeAll.vue';
 import AddAnime from '../pages/AddAnime.vue';
 import NotFound from '../pages/404.vue';
 import Reg from '../pages/Reg.vue';
+import Login from '../pages/Login.vue';
 
 const routes = [
   { path: '/', component: Home },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/animes/:url', name: 'Anime', component: Anime },
   { path: '/addanime/', name: 'AddAnime', component: AddAnime },
   { path: '/reg', name: 'Reg', component: Reg },
+  { path: '/login', name: 'UserLogin', component: Login },
   { path: '/:catchAll(.*)', component: NotFound },
 ];
 

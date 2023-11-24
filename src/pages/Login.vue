@@ -1,43 +1,39 @@
 <template>
-        <input type="text" v-model="username" placeholder="Username" />
-        <input type="password" v-model="password" placeholder="Password" />
+  <div>
+    <input type="text" v-model="username" placeholder="Username" />
+    <input type="password" v-model="password" placeholder="Password" />
+    <button @click="login">Login</button>
+  </div>
   </template>
   
   <script>
   export default {
     name: 'UserLogin',
     data() {
-      return {
-        username: '',
-        password: '',
-        message: ''
-      };
-    },
-    methods: {
-      login() {
-        const url = 'http://sithond.ru/api/login'; // URL для авторизации
-  
-        const data = {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        // Отправляем данные на сервер для авторизации
+        const response = await this.$axios.post('https://localhost:5001/login', {
           username: this.username,
           password: this.password
-        };
-  
-        this.$axios.post(url, data)
-          .then(response => {
-            // Проверка успешной авторизации
-            if (response.data && response.data.authenticated) {
-              this.message = 'Успешная авторизация!';
-              // Редирект на другую страницу, например, на главную
-              this.$router.push('/');
-            } else {
-              this.message = 'Неверные учетные данные';
-            }
-          })
-          .catch(error => {
-           // console.error('Ошибка авторизации:', error);
-            this.message = 'Ошибка авторизации';
-          });
+        });
+
+        // Если авторизация прошла успешно
+        console.log(response.data);
+        
+        // Вы можете выполнить действия, например, перенаправление на другую страницу
+        // this.$router.push('/dashboard');
+      } catch (error) {
+        // Обработка ошибки авторизации
+        console.error('Login failed:', error.response.data);
       }
     }
-  };
+  }
+};
   </script>

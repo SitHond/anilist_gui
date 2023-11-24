@@ -1,6 +1,6 @@
 <template>
     <footer class="app-footer">
-      <p>© 2023 SitHond</p>
+      <p>© 2023 SitHond | Alpha: 3.8.41</p>
       <!-- Дополнительные элементы нижнего колонтитула -->
     </footer>
   </template>
