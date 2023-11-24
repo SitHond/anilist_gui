@@ -1,4 +1,4 @@
-# anilist
+# anilist_gui
 
 ## Project setup
 ```
